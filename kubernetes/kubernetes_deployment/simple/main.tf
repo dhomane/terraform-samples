@@ -12,11 +12,11 @@ terraform {
 }
 
 # Documentation: https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/deployment
-resource "kubernetes_deployment" "changeme_simple_deployment" {
+resource "kubernetes_deployment" "terraform-k8s" {
   metadata {
-    name = "changeme-simple-deployment"
+    name = "terraform-k8s"
     labels = {
-      app = "changeme-simple-deployment"
+      app = "terraform-k8s"
     }
   }
 
@@ -24,19 +24,19 @@ resource "kubernetes_deployment" "changeme_simple_deployment" {
     replicas = 1
     selector {
       match_labels = {
-        app = "changeme-simple-deployment"
+        app = "terraform-k8s"
       }
     }
     template {
       metadata {
         labels = {
-          app = "changeme-simple-deployment"
+          app = "terraform-k8s"
         }
       }
       spec {
         container {
-          image = "nginx"
-          name  = "nginx"
+          image = "busybox"
+          name  = "busybox"
         }
       }
     }
